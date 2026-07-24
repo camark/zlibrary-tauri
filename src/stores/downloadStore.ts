@@ -73,6 +73,7 @@ function init() {
       task.progress = total > 0 ? Math.round((downloaded / total) * 100) : 0;
     } else if (type === "finish") {
       task.progress = 100;
+      task.status = "done";
     }
   });
 }
