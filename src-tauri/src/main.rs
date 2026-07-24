@@ -1,3 +1,5 @@
+#![windows_subsystem = "windows"]
+
 #[cfg(feature = "gui")]
 fn main() {
     zlibrary_core::run();
