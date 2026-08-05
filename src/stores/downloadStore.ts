@@ -73,7 +73,8 @@ function init() {
       task.progress = total > 0 ? Math.round((downloaded / total) * 100) : 0;
     } else if (type === "finish") {
       task.progress = 100;
-      task.status = "done";
+      // 注意：不在这里设置 status = "done"，因为 savePath 还没设置
+      // 等 invoke 返回后会设置 status 和 savePath
     }
   });
 }
@@ -95,7 +96,8 @@ export async function addDownload(book: BookInfo): Promise<void> {
     totalBytes: 0,
     downloadedBytes: 0,
   };
-  tasks.push(task);
+  // 添加到数组开头，让最新下载显示在最上面
+  tasks.unshift(task);
 
   try {
     task.status = "downloading";
